@@ -43,7 +43,6 @@ coverage.xml
 
 # Translations
 *.pot
-drag_and_drop_v2/conf/locale/en
 
 # Integration test output:
 /*.log
