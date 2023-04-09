@@ -124,7 +124,7 @@ msgstr "عنوان مسألة السحب والإسقاط. يظهر العنوا
 
 #: drag_and_drop_v2.py:82
 msgid "Drag and Drop"
-msgstr "سحب وإسقاط"
+msgstr "سحب وإفلات"
 
 #: drag_and_drop_v2.py:87
 msgid "Mode"

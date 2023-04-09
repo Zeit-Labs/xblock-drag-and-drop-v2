@@ -15,3 +15,6 @@ pylint==2.4.2
 
 selenium==2.53.6
 bok-choy==0.7.1
+
+# using LMS django version
+Django<4.0
