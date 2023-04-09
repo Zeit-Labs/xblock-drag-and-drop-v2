@@ -28,7 +28,7 @@ jobs:
       matrix:
         os: [ubuntu-20.04]
         python-version: [3.8]
-        toxenv: [py38, integration, quality]
+        toxenv: [py38, integration, quality, translations]
 
     steps:
     - name: checkout repo
