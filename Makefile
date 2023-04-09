@@ -9,7 +9,7 @@ JS_TARGET := $(WORKING_DIR)/public/js/translations
 EXTRACT_DIR := $(WORKING_DIR)/conf/locale/en/LC_MESSAGES
 EXTRACTED_DJANGO := $(EXTRACT_DIR)/django-partial.po
 EXTRACTED_DJANGOJS := $(EXTRACT_DIR)/djangojs-partial.po
-EXTRACTED_TEXT := $(EXTRACT_DIR)/text.po
+EXTRACTED_TEXT := $(EXTRACT_DIR)/django.po
 
 FIREFOX_VERSION := "43.0"
 
