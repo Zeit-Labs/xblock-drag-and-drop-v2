@@ -57,6 +57,7 @@ class DragAndDropBlock(
     """
     XBlock that implements a friendly Drag-and-Drop problem
     """
+    i18n_module_name = 'DragAndDropI18N'
 
     CATEGORY = "drag-and-drop-v2"
 
@@ -321,6 +322,13 @@ class DragAndDropBlock(
         Returns the Javascript translation file for the currently selected language, if any found by
         `pkg_resources`
         """
+        if hasattr(self.i18n_service, 'get_javascript_resource_url'):
+            module_name = self.get_xblock_module_name() # drag_and_drop_v2
+            _javascript_i18n_namespace = self.get_i18n_js_namespace() # self.__class__.__name__ + 'I18N'
+            url = self.i18n_service.get_javascript_resource_url(module_name)
+            if url:
+                return static(url) # some standard Django/Open edX method to use static files to support both local and S3
+        
         lang_code = translation.get_language()
         if not lang_code:
             return None
