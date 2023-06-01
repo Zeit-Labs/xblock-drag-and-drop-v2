@@ -57,6 +57,7 @@ class DragAndDropBlock(
     """
     XBlock that implements a friendly Drag-and-Drop problem
     """
+    i18n_js_namespace = 'DragAndDropI18N'
 
     CATEGORY = "drag-and-drop-v2"
 
@@ -315,12 +316,20 @@ class DragAndDropBlock(
         correct_count, total_count = self._get_item_stats()
         return correct_count / float(total_count)
 
-    @staticmethod
-    def _get_statici18n_js_url():
+    def _get_statici18n_js_url(self):
         """
         Returns the Javascript translation file for the currently selected language, if any found by
         `pkg_resources`
         """
+        # Check if OEP-58 is enabled
+        if hasattr(self, 'i18n_js_namespace') and hasattr(self.i18n_service, 'get_javascript_locale_path'):
+            # We keep safe-fail code here to avoid breaking the block if OEP-58 translation are not ready yet,
+            # this will be removed in the future when OEP-58 is enabled by default
+            statici18n_js_url = self.i18n_service.get_javascript_locale_path(self)
+            if statici18n_js_url:
+                return statici18n_js_url
+
+        # Continue with legacy code otherwise, this will be removed in the future when OEP-58 is enabled by default
         lang_code = translation.get_language()
         if not lang_code:
             return None
